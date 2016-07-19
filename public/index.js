@@ -20,12 +20,12 @@ window.onload = function(){
 }
 
 var displayOptions = function(select) {
-for ( var i = 0; i < state.countries.length; i++ ) {
-  var opt = document.createElement('option')
-  opt.innerHTML = state.countries[i].name;
-  opt.value = i;
-  select.appendChild(opt)
-}
+  for ( var i = 0; i < state.countries.length; i++ ) {
+    var opt = document.createElement('option')
+    opt.innerHTML = state.countries[i].name;
+    opt.value = i;
+    select.appendChild(opt)
+  }
 }
 
 var persist= function(){
@@ -40,51 +40,27 @@ var selectCountry = function(){
 
   document.getElementById("textToDisplay").innerHTML = "Country name: " + selectedCountry.name + ", population: " +  selectedCountry.population + ", Capital City: " + selectedCountry.capital;
 
+  borderCountry(selectedCountry)
+
   localStorage.setItem('countries', JSON.stringify(selectedCountry));
 }
 
+var borderCountry = function(selectedCountry){
+  for ( var i in selectedCountry.borders){
+    var border = selectedCountry.borders[i];
+    // console.log(border)
+    for ( var x in state.countries){ 
+      var alpha = state.countries[x];
+    if ( border === alpha.alpha3Code ){
+        console.log(alpha)
+        document.getElementById("borderingNations").innerHTML = "BORDERING NATIONS: " + "Country name: " + alpha.name + ", population: " +  alpha.population + ", Capital City: " + alpha.capital;
+        }
+      }
+    }
+  }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.onload = function(){
-//   console.log('window loaded');
-
-
-
-//   var url = 'https://restcountries.eu/rest/v1';
-//   var request = new XMLHttpRequest();
-//   request.open( "GET", url );
-//   request.onload = function(){
-//     if (request.status === 200){
-//       var jsonString = request.responseText;
-//       // console.log( jsonString );
-//       var countries = JSON.parse( jsonString );
-//       // var country = countries[1];
-//       // console.log(country);
-//       // console.log(country.name);
-
-//       }
-//     // console.log( request.responseText );
-//   }
-//   request.send( null );
-//   // console.log( request );
-// }
-
-
-// }
 
