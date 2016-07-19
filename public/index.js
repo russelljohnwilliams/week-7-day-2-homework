@@ -13,7 +13,7 @@ window.onload = function(){
       // console.log( select );
       var jsonString = request.responseText;
       state.countries = JSON.parse( jsonString );
-      // console.log( 'data', countries )
+      console.log( 'data', state.countries[0] )
       displayOptions( select );
     }
   }
@@ -22,14 +22,12 @@ window.onload = function(){
 
 var displayOptions = function(select) {
 // console.log(countries[0].name)
-  for ( var i = 0; i < state.countries.length; i++ ) {
-    var opt = document.createElement('option')
-    opt.innerHTML = state.countries[i].name;
-    opt.value = i;
-    select.appendChild(opt)
-    console.log(opt.value)
-
-  }
+for ( var i = 0; i < state.countries.length; i++ ) {
+  var opt = document.createElement('option')
+  opt.innerHTML = state.countries[i].name;
+  opt.value = i;
+  select.appendChild(opt)
+}
 }
 
 var selectCountry = function(){
@@ -37,9 +35,8 @@ var selectCountry = function(){
   var selectedCountry = state.countries[index];
   console.log( selectedCountry );
 
-  document.getElementById("textToDisplay").innerHTML = "Country name: " + object;
-  }
-// }
+  document.getElementById("textToDisplay").innerHTML = "Country name: " + selectedCountry.name + ", population: " +  selectedCountry.population + ", Capital City: " + selectedCountry.capital;
+}
 
 
 
@@ -62,7 +59,7 @@ var selectCountry = function(){
 //   console.log('window loaded');
 
 
-  
+
 //   var url = 'https://restcountries.eu/rest/v1';
 //   var request = new XMLHttpRequest();
 //   request.open( "GET", url );
