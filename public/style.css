@@ -50,9 +50,9 @@ h1 {
   background-color: grey;
 }
 
-#borderingNations{
+p{
   background-color: #fcbe32;
-  font-size: 5px
+  font-size: 18px;
   height: 25px;
   transform: rotate(-4deg);
   margin: 50px 0 0 0;

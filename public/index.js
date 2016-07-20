@@ -48,12 +48,10 @@ var selectCountry = function(){
 var borderCountry = function(selectedCountry){
   for ( var i in selectedCountry.borders){
     var border = selectedCountry.borders[i];
-    // console.log(border)
     for ( var x in state.countries){ 
-      var alpha = state.countries[x];
-    if ( border === alpha.alpha3Code ){
-        console.log(alpha)
-        document.getElementById("borderingNations").innerHTML = "BORDERING NATIONS: " + "Country name: " + alpha.name + ", population: " +  alpha.population + ", Capital City: " + alpha.capital;
+      var alpha = state.countries[x].alpha3Code;
+    if ( border === alpha ){
+        document.getElementById("borderingNations").innerHTML = "<p>" + "BORDERING NATIONS: " + "Country name: " + state.countries[x].name + ", population: " +  state.countries[x].population + ", Capital City: " + state.countries[x].capital + "</p>";
         }
       }
     }
